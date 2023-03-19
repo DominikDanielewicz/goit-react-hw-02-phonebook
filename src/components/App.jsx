@@ -20,7 +20,7 @@ class App extends Component {
     let contacts = [...this.state.contacts];
     const names = contacts.map(contact => contact.name);
 
-    if (!names.includes(name)) {
+    if (!names.find(el => el === name)) {
       contacts = [...contacts, { id: contactId, name: name, number: number }];
       this.setState({
         contacts,
@@ -55,7 +55,16 @@ class App extends Component {
     );
 
     return (
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          gap: '20px',
+          alignItems: 'center',
+          padding: '20px',
+        }}
+      >
         <h1>PhoneBook</h1>
         <ContactForm
           addContact={this.addContact}

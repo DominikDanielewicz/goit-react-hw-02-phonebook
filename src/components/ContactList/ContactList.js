@@ -1,9 +1,11 @@
-import ContactListElement from 'components/ContactListElement/ContactListElement';
 import React from 'react';
+import ContactListElement from 'components/ContactListElement/ContactListElement';
+import propTypes from 'prop-types';
+import css from './ContactList.module.css';
 
 const ContactList = props => {
   return (
-    <ul>
+    <ul className={css.contactlist}>
       {props.list.map(contact => (
         <ContactListElement
           key={contact.id}
@@ -14,6 +16,17 @@ const ContactList = props => {
       ))}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  list: propTypes.arrayOf(
+    propTypes.shape({
+      key: propTypes.string,
+      name: propTypes.string.isRequired,
+      number: propTypes.string.isRequired,
+      deleteContact: propTypes.func,
+    })
+  ),
 };
 
 export default ContactList;

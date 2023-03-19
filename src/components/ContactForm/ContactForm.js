@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 
 class ContactForm extends Component {
   state = {
@@ -9,22 +8,9 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let contactId = nanoid();
-
     const { name, number } = this.state;
-
-    const names = this.props.contacts.map(contact => contact.name);
-
-    if (!names.includes(name)) {
-      this.setState({
-        contacts: [
-          { id: contactId, name: name, number: number },
-          ...this.props.contacts,
-        ],
-      });
-    } else {
-      alert(`${name} is already in contacts`);
-    }
+    console.log(`${name}`);
+    this.props.add(name, number);
   };
 
   handleChange = e => {

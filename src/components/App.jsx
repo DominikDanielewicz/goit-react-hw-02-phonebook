@@ -15,20 +15,28 @@ class App extends Component {
     filter: '',
   };
 
-  addClient = (name, number) => {
+  addContact = (name, number) => {
     let contactId = nanoid();
-    const names = this.state.contacts.map(contact => contact.name);
+    let contacts = [...this.state.contacts];
+    const names = contacts.map(contact => contact.name);
 
     if (!names.includes(name)) {
+      contacts = [...contacts, { id: contactId, name: name, number: number }];
       this.setState({
-        contacts: [
-          { id: contactId, name: name, number: number },
-          ...this.state.contacts,
-        ],
+        contacts,
       });
     } else {
       alert(`${name} is already in contacts`);
     }
+  };
+
+  deleteContact = id => {
+    const contacts = [...this.state.contacts];
+    const index = contacts.findIndex(person => person.id === id);
+    contacts.splice(index, 1);
+    this.setState({
+      contacts,
+    });
   };
 
   handleFilter = e => {
@@ -42,16 +50,20 @@ class App extends Component {
 
     const list = contacts.filter(
       contact =>
-        this.state.filter === '' || contact.name.includes(this.state.filter)
+        this.state.filter === '' ||
+        contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
 
     return (
       <div>
         <h1>PhoneBook</h1>
-        <ContactForm add={this.addClient} />
+        <ContactForm
+          addContact={this.addContact}
+          deleteContact={this.deleteContact}
+        />
         <h2>Contacts</h2>
         <Filter change={this.handleFilter} value={filter} />
-        <ContactList list={list} />
+        <ContactList list={list} deleteContact={this.deleteContact} />
       </div>
     );
   }

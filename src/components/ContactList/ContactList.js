@@ -9,6 +9,7 @@ const ContactList = props => {
           key={contact.id}
           name={contact.name}
           number={contact.number}
+          deleteContact={() => props.deleteContact(contact.id)}
         />
       ))}
     </ul>

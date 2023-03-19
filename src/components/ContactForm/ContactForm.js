@@ -10,7 +10,7 @@ class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = this.state;
     console.log(`${name}`);
-    this.props.add(name, number);
+    this.props.addContact(name, number);
   };
 
   handleChange = e => {

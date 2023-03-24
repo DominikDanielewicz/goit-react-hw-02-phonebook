@@ -7,6 +7,7 @@ const Filter = props => {
     <div className={css.filter}>
       <h3>Find contacts by name:</h3>
       <input
+        className={css.filter__field}
         id="filter"
         value={props.filter}
         onChange={props.change}

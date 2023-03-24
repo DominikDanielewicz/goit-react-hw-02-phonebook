@@ -23,8 +23,11 @@ class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <form className={css.contactForm} onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label className={css.contactForm__label} htmlFor="name">
+          Name
+        </label>
         <input
+          className={css.contactForm__field}
           id="name"
           value={name}
           onChange={this.handleChange}
@@ -34,8 +37,11 @@ class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label htmlFor="number">Number</label>
+        <label className={css.contactForm__label} htmlFor="number">
+          Number
+        </label>
         <input
+          className={css.contactForm__field}
           id="number"
           value={number}
           onChange={this.handleChange}
@@ -45,7 +51,9 @@ class ContactForm extends Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button type="submit">Add Contact</button>
+        <button className={css.contactForm__button} type="submit">
+          Add Contact
+        </button>
       </form>
     );
   }

@@ -33,7 +33,7 @@ class ContactForm extends Component {
           onChange={this.handleChange}
           type="text"
           name="name"
-          pattern="^[a-zA-ZĄąĆćĘęŃńÓóŚśŹźŻż]+(([' \-][a-zA-ZĄąĆćĘęŃńÓóŚśŹźŻż])?[a-zA-ZĄąĆćĘęŃńÓóŚśŹźŻż]*)*$"
+          pattern="^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż]+(([' \-][a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż])?[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
